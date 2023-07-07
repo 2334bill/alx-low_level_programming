@@ -2,7 +2,6 @@
 /**
 *_print_rev_recursion - prints in rev
 *@s: the string
-*@i: no major ppurpose
 *Return: nothing
 */
 void _print_rev_recursion(char *s)
