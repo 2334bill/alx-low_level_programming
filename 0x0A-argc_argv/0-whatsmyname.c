@@ -4,7 +4,7 @@
 *main - prints the name of the executable file
 *@argv: the argumnts
 *@argc: the number of arguments
-*Return: nothing 
+*Return: nothing
 */
 int main(int argc, char **argv)
 {
