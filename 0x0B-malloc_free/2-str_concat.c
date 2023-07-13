@@ -17,10 +17,14 @@ i = 0;
 len1 = strlen(s1);
 len2 = strlen(s2);
 array = malloc((len1 + len2 + 2) * sizeof(char));
-for (i = 0; i < (len1 + len2); i++)
+for (i = 0; i < len1; i++)
 {
 array[i] = s1[i];
+}
+for (i = 0; i < len2; i++)
+{
 array[i + len1] = s2[i];
 }
+array[len1 + len2] = '\0';
 return (array);
 }
