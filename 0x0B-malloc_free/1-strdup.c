@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 /**
 *_strdup - copies the string
@@ -8,21 +9,17 @@
 char *_strdup(char *str)
 {
 char *array;
-int i;
-i = 0;
-if (str != NULL)
-{
-i++;
-}
-array = (char *)malloc(i *sizeof(char));
+size_t len;
 if (str == NULL)
 {
 return (NULL);
 }
-else
+len = strlen(str);
+array = malloc((len + 1) * sizeof(char));
+if (array == NULL)
 {
-array = str;
-return (array);
+return (NULL);
 }
-free(array);
+strcpy(array, str);
+return (array);
 }
