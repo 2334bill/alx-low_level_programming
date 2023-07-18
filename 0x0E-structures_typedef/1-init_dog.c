@@ -1,19 +1,7 @@
 #include <stdlib.h>
+#include "dog.h"
 #include <stdio.h>
 #include <string.h>
-/**
-*struct dog - yyy
-*@name:YYY
-*@age:YYY
-*@owner:YYY
-*Return:YYY
-*/
-struct dog
-{
-char *name;
-float age;
-char *owner;
-};
 /**
 * init_dog - initializes the elements of the struct
 * @d: pointer to struct
