@@ -26,9 +26,5 @@ printf("\n");
 }
 else
 {
-for (i = 0; i < n; i++)
-{
-printf("%d\n", va_arg(args, int));
-}
-}
+printf("\n");
 }
