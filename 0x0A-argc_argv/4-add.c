@@ -1,38 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 /**
-*main - this adds all the positive integers
-*@argv: vector
-*@argc: count
+*check_num - string there are digit
+*@str: the str
 *Return: nothing
 */
-int main(int argc, char **argv)
+int check_num(char *str)
 {
-if (argc > 1)
-{
-int i;
-int sum;
-sum = 0;
-for (i = 1; i < argc; i++)
-{
-if (atoi(argv[i]) > 0 && isdigit(*argv[i]))
-{
-sum += atoi(argv[i]);
+unsigned int count;
+ count = 0;
+ while (count < strlen(str))
+   {
+     if (!isdigit(str[count]))
+       {
+	 return (0);
+       }
+     count++;
+   }
+ return (1);
 }
-else
+/**
+*main - print
+*@argc: count 
+*@argv: vector
+*Return: nothing
+*/
+int main(int argc, char *argv[])
 {
-printf("Error\n");
-return (0);
-}
+  int count;
+  int str_to_int;
+  int sum = 0;
+  count = 1;
+  while (count < argc)
+    {
+      if (check_num(argv[count]))
+	{
+	  str_to_int = atoi(argv[count]);
+	  sum += str_to_int;
+	}
+      else
+	{
+	  printf("Error\n");
+	  return (1);
+	}
+count++;
 }
 printf("%d\n", sum);
 return (0);
 }
-else
-{
-printf("0\n");
-return (0);
-}
-return (0);
-}
+  
