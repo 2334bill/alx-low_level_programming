@@ -1,50 +1,51 @@
-#include <stdio.h>
 #include <stdarg.h>
+#include <stdio.h>
 /**
-* print_all - prints anything based on the format specifier.
-* @format: a list of types of arguments passed to the function.
+*print_all - prints all
+*@format: nice
+*Return: nothing
 */
 void print_all(const char * const format, ...)
 {
-char c;
-int i;
-float f;
-char *s;
-const char *fmt_ptr;
-va_list args;
-va_start(args, format);
-fmt_ptr = format;
-while (fmt_ptr && *fmt_ptr)
-{
-c = *fmt_ptr;
-switch (c)
-{
-case 'c':
-i = va_arg(args, int);
-printf("%c", i);
-break;
-case 'i':
-i = va_arg(args, int);
-printf("%d", i);
-break;
-case 'f':
-f = (float)va_arg(args, double);
-printf("%f", f);
-break;
-case 's':
-s = va_arg(args, char *);
-if (s == NULL)
-printf("(nil)");
-else
-printf("%s", s);
-break;
-default:
-break;
-}
-fmt_ptr++;
-if (*fmt_ptr && (c == 'c' || c == 'i' || c == 'f' || c == 's'))
-printf(", ");
-}
-printf("\n");
-va_end(args);
+  va_list list;
+  const char *format_ptr;
+  const char *sep;
+  char *str;
+    if (!format)
+        return;
+format_ptr = format;
+    
+    va_start(list, format);
+
+sep = "";
+
+    while (*format_ptr)
+    {
+        switch (*format_ptr)
+        {
+        case 'c':
+            printf("%s%c", sep, va_arg(list, int));
+            break;
+        case 'i':
+            printf("%s%d", sep, va_arg(list, int));
+            break;
+        case 'f':
+            printf("%s%f", sep, va_arg(list, double));
+            break;
+        case 's':
+            str = va_arg(list, char *);
+            if (!str)
+                str = "(nil)";
+            printf("%s%s", sep, str);
+            break;
+        default:
+            break;
+        }
+
+        sep = ", ";
+        format_ptr++;
+    }
+
+    va_end(list);
+    printf("\n");
 }
