@@ -10,17 +10,40 @@
 char *argstostr(int ac, char **av)
 {
 int i;
-char **name;
+int n;
+int r;
+int l;
+char *str;
+r = 0;
+l = 0;
 if (ac == 0 || av == NULL)
 {
 return (NULL);
 }
-name = malloc(ac * sizeof(char *));
-name = av;
 for (i = 0; i < ac; i++)
 {
-printf("%s\n", name[i]);
+for (n = 0; av[i][n]; n++)
+{
+l++;
 }
-free(name);
-return (* name);
+}
+l += ac;
+str = malloc(sizeof(char) * l + 1);
+if (str == NULL)
+{
+return (NULL);
+}
+for (i = 0; i < ac; i++)
+{
+for (n = 0; av[i][n]; n++)
+{
+str[r] = av[i][n];
+r++;
+}
+if (str[r] == '\0')
+{
+str[r++] = '\n';
+}
+}
+return (str);
 }

@@ -49,8 +49,8 @@ s[k] = s1[k];
 else
 {
 s[k] = s2[k - i];
-	}
-      k++;
+}
+k++;
 }
 s[k] = '\0';
 return (s);
