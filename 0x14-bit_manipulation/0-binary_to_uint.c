@@ -16,7 +16,7 @@ double power(double number, int exponent)
 int i;
 if (exponent == 0)
 {
-return 1.0;
+return (1.0);
 }
 else if (exponent > 0)
 {
@@ -25,7 +25,7 @@ for (i = 0; i < exponent; i++)
 {
 result *= number;
 }
-return result;
+return (result);
 }
 else
 {
@@ -34,7 +34,7 @@ for (i = 0; i < -exponent; i++)
 {
 result /= number;
 }
-return result;
+return (result);
 }
 }
 /**
