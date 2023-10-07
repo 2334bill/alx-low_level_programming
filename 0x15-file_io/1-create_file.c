@@ -10,28 +10,34 @@
 */
 int create_file(const char *filename, char *text_content)
 {
-  ssize_t o, r, w, outsize;
+  ssize_t w;
   char *buffer;
+  int outsize;
   buffer = (char *)malloc(strlen(text_content) + 1);
   if (buffer == NULL)
     {
       return (-1);
     }
+ 
+  outsize = open(filename, O_RDONLY | O_CREAT | O_TRUNC, 0600);
+  if (outsize == -1)
+    {
+      close(outsize);
+      free(buffer);
+      return (-1);
+    }
+  strcpy(buffer, text_content);
+  w = write(outsize,buffer,strlen(text_content));
+  if (w == -1)
+    {
+      close(outsize);
+      free(buffer);
+      close(w);
+      return (-1);
+    }
+  close(outsize);
+  free(buffer);
+  close(w);
 
-  o = open(filename, O_RDONLY);
-  r = read(o, buffer,strlen(text_content));
-  outsize = open(text_content, O_WRONLY | O_CREAT | O_TRUNC, 0600);
-  w = write(outsize, buffer, r);
-	   if ( o == -1 || r == -1 || outsize == -1 || w == -1)
-	     {
-	       close(o);
-	       close(outsize);
-	       free(buffer);
-	       return (-1);
-	     }
-	   close(o);
-               close(outsize);
-               free(buffer);
-               return (1);
-	  
+  return (1);
 }
