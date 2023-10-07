@@ -3,10 +3,10 @@
 #include <string.h>
 #include <stdlib.h>
 /**
-*create_file - this is program that creates a file and writes some content in it
-*@filename:this the file where we are going to put some content
-*@text_file:this is the file containing the content we are going to print
-*Return 1 on success and -1 on failure
+*create_file - this is program that creates a file
+*@filename:this the file where we are going to put
+*@text_content:this is the file containing the content we are going to print
+*Return: 1 on success and -1 on failure
 */
 int create_file(const char *filename, char *text_content)
 {
@@ -25,7 +25,7 @@ free(buffer);
 return (-1);
 }
 strcpy(buffer, text_content);
-w = write(outsize,buffer,strlen(text_content));
+w = write(outsize, buffer, strlen(text_content));
 if (w == -1)
 {
 close(outsize);
