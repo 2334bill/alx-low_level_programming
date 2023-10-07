@@ -22,7 +22,6 @@ int create_file(const char *filename, char *text_content)
   outsize = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0600);
   if (outsize == -1)
     {
-      close(outsize);
       free(buffer);
       return (-1);
     }
